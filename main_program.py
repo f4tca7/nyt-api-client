@@ -27,5 +27,7 @@ def load_and_store(from_year, to_year, from_month, to_month):
 def preprocess(df):
     preprocess_nyt_data.preprocess(df, save_preprocessed=True, base_path=base_path)
 
-df = load_and_store(FROM_Y, TO_Y, FROM_M, TO_M)
+#df = load_and_store(FROM_Y, TO_Y, FROM_M, TO_M)
+df = pd.read_csv('datasets/nyt_archive_2019_1_2019_2.csv') 
+print(df.head())
 preprocess(df)

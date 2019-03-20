@@ -38,11 +38,13 @@ def preprocess(nyt_data, save_preprocessed=False, base_path='', filename=''):
     - Remove single characters
     - Remove multiple spaces
     - Convert to lowercase
+    - remove stop words
     - Lemmatize
     - Join all text for the same date into the same tuple
     """
     stemmer = WordNetLemmatizer()
-
+    if 'Unnamed: 0' in nyt_data.columns:
+        nyt_data = nyt_data.drop('Unnamed: 0', axis=1)
     #nyt_data = pd.read_csv('', parse_dates=True)
     
     nyt_data = nyt_data.dropna()
@@ -68,6 +70,8 @@ def preprocess(nyt_data, save_preprocessed=False, base_path='', filename=''):
     nyt_data['all_text'] = nyt_data['all_text'].apply(lambda x : x.lower())
     # Lemmatization
     nyt_data['all_text'] = nyt_data['all_text'].apply(lambda x : x.split())
+    stop_words = stopwords.words('english')
+    nyt_data['all_text'] = nyt_data['all_text'].apply(lambda x : [word for word in x if word not in stop_words])
     nyt_data['all_text'] = nyt_data['all_text'].apply(lambda x : [stemmer.lemmatize(word) for word in x])
     nyt_data['all_text'] = nyt_data['all_text'].apply(lambda x : ' '.join(x))
 
