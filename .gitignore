@@ -102,3 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+secrets.py
+
+# exclude everything
+datasets/*
+
+# exception to the rule
+!datasets/.gitkeep 
