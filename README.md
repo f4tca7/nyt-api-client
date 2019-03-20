@@ -1,14 +1,15 @@
 # nyt-api-client
-Retrieve data from the New York Times API and preprocess for NLP
 
-Usage:
+Retrieve data from the New York Times Archives API and preprocess for NLP
+
+### Usage:
 
 1) Get an NYT API key from https://developer.nytimes.com/
 2) Create a file "secrets.py" in which you set nyt_api_key to your API Key (or just replace the key directly in nyt_api.py)
 3) In main_program.py, check the date range and target folder
 4) Run main_program.py
 
-What it does:
+### What it does:
 
 In nyt_api.py:
 - Call function load_from_archives_api() to load data from the NYT Archives API https://developer.nytimes.com/docs/archive-product/1/overview
